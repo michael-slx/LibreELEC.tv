@@ -77,7 +77,7 @@
     OPENGLES="mesa"
 
   # Displayserver to use (x11 / no)
-    DISPLAYSERVER="no"
+    DISPLAYSERVER="x11"
 
   # Windowmanager to use (fluxbox / none)
     WINDOWMANAGER="none"
