@@ -5,6 +5,7 @@ ACTION!="add|change", GOTO="end_video"
 
 # xorg_start only does something for subsystem "pci" and "video" class.
 SUBSYSTEM=="pci", ATTR{class}=="0x030000", GOTO="subsystem_pci"
+ENV{xorg_driver}="modesetting", TAG+="systemd", ENV{SYSTEMD_WANTS}+="xorg-configure@modesetting.service"
 GOTO="end_video"
 
 # check for drivers using the pci substem
