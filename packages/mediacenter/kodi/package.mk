@@ -28,7 +28,8 @@ configure_package() {
 
   if [ "${DISPLAYSERVER}" = "x11" ]; then
     PKG_DEPENDS_TARGET+=" libX11 libXext libdrm libXrandr"
-    KODI_XORG="-DCORE_PLATFORM_NAME=x11 -DAPP_RENDER_SYSTEM=gl"
+    KODI_XORG="-DCORE_PLATFORM_NAME=x11 gbm -DAPP_RENDER_SYSTEM=gl"
+    PKG_APPLIANCE_XML="${PKG_DIR}/config/appliance-gbm.xml"
   elif [ "${DISPLAYSERVER}" = "weston" ]; then
     PKG_DEPENDS_TARGET+=" wayland waylandpp"
     CFLAGS+=" -DMESA_EGL_NO_X11_HEADERS"
@@ -210,11 +211,11 @@ configure_package() {
                          -DENABLE_LCMS2=OFF \
                          ${PKG_KODI_USE_LTO} \
                          ${KODI_ARCH} \
+                         ${KODI_XORG} \
                          ${KODI_NEON} \
                          ${KODI_VDPAU} \
                          ${KODI_VAAPI} \
                          ${KODI_CEC} \
-                         ${KODI_XORG} \
                          ${KODI_SAMBA} \
                          ${KODI_NFS} \
                          ${KODI_LIBDVD} \
